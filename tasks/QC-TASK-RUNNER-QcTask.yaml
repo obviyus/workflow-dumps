@@ -6,7 +6,6 @@ control:
 wants:
     cpu: 0.15
     memory: 128
-    ports: []
 bind:
   - name: from_QC-TASK-RUNNER-QcTask_to_QC-CHECK-RUNNER-QcCheck
     type: push
