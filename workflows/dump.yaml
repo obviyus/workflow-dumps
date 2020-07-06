@@ -1,63 +1,65 @@
 name: dump
 defaults: {}
 roles:
-  name: "dump"
-  roles:
-    - connect:
-        - name: from_internal-dpl-clock_to_producer-0
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_producer-0"
-      constraints: []
-      defaults: {}
-      name: producer-0
-      task:
-        load: producer-0
-    - connect:
-        - name: from_internal-dpl-clock_to_Dispatcher
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_Dispatcher"
-        - name: from_producer-0_to_Dispatcher
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.producer-0:from_producer-0_to_Dispatcher"
-      constraints: []
-      defaults: {}
-      name: Dispatcher
-      task:
-        load: Dispatcher
-    - connect:
-        - name: from_internal-dpl-clock_to_QC-TASK-RUNNER-QcTask
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_QC-TASK-RUNNER-QcTask"
-        - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.Dispatcher:from_Dispatcher_to_QC-TASK-RUNNER-QcTask"
-      constraints: []
-      defaults: {}
-      name: QC-TASK-RUNNER-QcTask
-      task:
-        load: QC-TASK-RUNNER-QcTask
-    - connect:
-        - name: from_QC-TASK-RUNNER-QcTask_to_QC-CHECK-RUNNER-QcCheck
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.QC-TASK-RUNNER-QcTask:from_QC-TASK-RUNNER-QcTask_to_QC-CHECK-RUNNER-QcCheck"
-      constraints: []
-      defaults: {}
-      name: QC-CHECK-RUNNER-QcCheck
-      task:
-        load: QC-CHECK-RUNNER-QcCheck
-    - connect:
-        - name: from_QC-CHECK-RUNNER-QcCheck_to_printer
-          type: pull
-          transport: shmem
-          target: "{{ Parent().Path }}.QC-CHECK-RUNNER-QcCheck:from_QC-CHECK-RUNNER-QcCheck_to_printer"
-      constraints: []
-      defaults: {}
-      name: printer
-      task:
-        load: printer
+  - name: "temp"
+    defaults: {}
+  - name: "dump"
+    roles:
+      - connect:
+          - name: from_internal-dpl-clock_to_producer-0
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_producer-0"
+        constraints: []
+        defaults: {}
+        name: producer-0
+        task:
+          load: producer-0
+      - connect:
+          - name: from_internal-dpl-clock_to_Dispatcher
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_Dispatcher"
+          - name: from_producer-0_to_Dispatcher
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.producer-0:from_producer-0_to_Dispatcher"
+        constraints: []
+        defaults: {}
+        name: Dispatcher
+        task:
+          load: Dispatcher
+      - connect:
+          - name: from_internal-dpl-clock_to_QC-TASK-RUNNER-QcTask
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_QC-TASK-RUNNER-QcTask"
+          - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.Dispatcher:from_Dispatcher_to_QC-TASK-RUNNER-QcTask"
+        constraints: []
+        defaults: {}
+        name: QC-TASK-RUNNER-QcTask
+        task:
+          load: QC-TASK-RUNNER-QcTask
+      - connect:
+          - name: from_QC-TASK-RUNNER-QcTask_to_QC-CHECK-RUNNER-QcCheck
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.QC-TASK-RUNNER-QcTask:from_QC-TASK-RUNNER-QcTask_to_QC-CHECK-RUNNER-QcCheck"
+        constraints: []
+        defaults: {}
+        name: QC-CHECK-RUNNER-QcCheck
+        task:
+          load: QC-CHECK-RUNNER-QcCheck
+      - connect:
+          - name: from_QC-CHECK-RUNNER-QcCheck_to_printer
+            type: pull
+            transport: shmem
+            target: "{{ Parent().Path }}.QC-CHECK-RUNNER-QcCheck:from_QC-CHECK-RUNNER-QcCheck_to_printer"
+        constraints: []
+        defaults: {}
+        name: printer
+        task:
+          load: printer
