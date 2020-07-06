@@ -1,0 +1,26 @@
+name: producer-0
+defaults:
+    user: flp
+control:
+    mode: fairmq
+wants:
+    cpu: 0.15
+    memory: 128
+    ports: []
+bind:
+  - name: from_producer-0_to_Dispatcher
+    type: push
+    transport: shmem
+    addressing: ipc
+properties:
+    color: "false"
+    severity: trace
+command:
+    shell: true
+    value: o2-qc-run-basic
+    user: flp
+    arguments:
+      - -b
+      - --dump-workflow
+      - --dump-workflow-file
+      - dpl-dump.json

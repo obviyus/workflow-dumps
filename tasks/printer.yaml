@@ -1,0 +1,22 @@
+name: printer
+defaults:
+    user: flp
+control:
+    mode: fairmq
+wants:
+    cpu: 0.15
+    memory: 128
+    ports: []
+bind: []
+properties:
+    color: "false"
+    severity: trace
+command:
+    shell: true
+    value: o2-qc-run-basic
+    user: flp
+    arguments:
+      - -b
+      - --dump-workflow
+      - --dump-workflow-file
+      - dpl-dump.json
