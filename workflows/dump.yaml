@@ -1,9 +1,6 @@
 name: dump
 defaults: {}
 roles:
-    connect: []
-    constraints: []
-    defaults: {}
     name: dump
     roles:
       - connect:
