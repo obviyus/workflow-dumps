@@ -6,12 +6,11 @@ control:
 wants:
     cpu: 0.15
     memory: 128
-    ports: []
 bind:
-  - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
-    type: push
-    transport: shmem
-    addressing: ipc
+    - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
+      type: push
+      transport: shmem
+      addressing: ipc
 properties:
     color: "false"
     severity: trace
@@ -20,7 +19,7 @@ command:
     value: o2-qc-run-basic
     user: flp
     arguments:
-      - -b
-      - --dump-workflow
-      - --dump-workflow-file
-      - dpl-dump.json
+        - -b
+        - --dump-workflow
+        - --dump-workflow-file
+        - dpl-dump.json
