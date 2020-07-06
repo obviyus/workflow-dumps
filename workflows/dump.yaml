@@ -1,10 +1,6 @@
 name: dump
 defaults: {}
 roles:
-  - name: "temp"
-    defaults: {}
-    task:
-      load: ""
   - name: "dump"
     roles:
       - connect:
