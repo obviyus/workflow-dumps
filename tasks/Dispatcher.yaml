@@ -7,19 +7,21 @@ wants:
     cpu: 0.15
     memory: 128
 bind:
-    - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
-      type: push
-      transport: shmem
-      addressing: ipc
+  - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
+    type: push
+    transport: shmem
+    addressing: ipc
 properties:
     color: "false"
     severity: trace
 command:
     shell: true
-    value: o2-qc-run-basic
+    value: |-
+        eval `aliswmod load QualityControl Control-OCCPlugin` &&
+        o2-qc-run-basic
     user: flp
     arguments:
-        - -b
-        - --dump-workflow
-        - --dump-workflow-file
-        - dpl-dump.json
+      - -b
+      - --dump-workflow
+      - --dump-workflow-file
+      - dpl-dump.json

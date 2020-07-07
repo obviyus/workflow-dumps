@@ -16,7 +16,9 @@ properties:
     severity: trace
 command:
     shell: true
-    value: o2-qc-run-basic
+    value: |-
+        eval `aliswmod load QualityControl Control-OCCPlugin` &&
+        o2-qc-run-basic
     user: flp
     arguments:
       - -b
