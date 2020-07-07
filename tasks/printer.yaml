@@ -13,7 +13,7 @@ properties:
 command:
     shell: true
     value: |-
-        eval `aliswmod load Control-OCCPlugin` &&
+        eval `aliswmod load QualityControl Control-OCCPlugin` &&
         o2-qc-run-basic
     user: flp
     arguments:
