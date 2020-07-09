@@ -6,7 +6,6 @@ control:
 wants:
     cpu: 0.15
     memory: 128
-    ports: []
 bind:
   - name: from_Dispatcher_to_QC-TASK-RUNNER-QcTask
     type: push
