@@ -17,11 +17,10 @@ properties:
 command:
     shell: true
     value: |-
-        eval `aliswmod load QualityControl Control-OCCPlugin Control-OCCPlugin Control-OCCPlugin` &&
+        eval `aliswmod load QualityControl Control-OCCPlugin` &&
         o2-qc-run-basic
     user: flp
     arguments:
       - -b
-      - --dump-workflow
-      - --dump-workflow-file
-      - dpl-dump.json
+      - --id
+      - QC-TASK-RUNNER-QcTask

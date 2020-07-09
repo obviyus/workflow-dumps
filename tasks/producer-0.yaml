@@ -22,6 +22,5 @@ command:
     user: flp
     arguments:
       - -b
-      - --dump-workflow
-      - --dump-workflow-file
-      - dpl-dump.json
+      - --id
+      - producer-0
