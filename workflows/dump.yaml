@@ -58,6 +58,3 @@ roles:
         target: '{{ Parent().Path }}.QC-CHECK-RUNNER-QcCheck:from_QC-CHECK-RUNNER-QcCheck_to_printer'
     constraints: []
     defaults: {}
-    name: printer
-    task:
-        load: printer
