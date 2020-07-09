@@ -6,6 +6,7 @@ control:
 wants:
     cpu: 0.15
     memory: 128
+    ports: []
 bind:
   - name: from_producer-0_to_Dispatcher
     type: push
